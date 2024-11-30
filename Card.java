@@ -1,5 +1,8 @@
 //package cardGame;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Card {
 
     // Instance variables
@@ -82,6 +85,7 @@ public class Card {
                cardSuit.equals(otherCard.cardSuit) && 
                cardPic.equals(otherCard.cardPic);
     }
+    
 
     // toString method for printing the card
     @Override

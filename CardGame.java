@@ -7,6 +7,7 @@ import java.io.FileReader;
 import java.io.IOException;
 //import java.util.ArrayList;
 //import java.util.List;
+import java.util.Collections;
 import java.util.Scanner;
 
 
@@ -47,20 +48,57 @@ public class CardGame {
         }
 
         // Print the loaded cards
-        System.out.println("Cards loaded:");
-        cardList.displayList();
+        //System.out.println("Cards loaded:");
+        //cardList.displayList();
+
+        //shuffle the deck
+        cardList.shuffle();
 		
 		Card[] playerHand = new Card[5];
-		for(int i = 0; i < playerHand.length; i++)
+        Card[] dealerHand = new Card[5];
+
+		for(int i = 0; i < playerHand.length; i++){
+            dealerHand[i] = cardList.getFirst();
 			playerHand[i] = cardList.getFirst();
+        }
 		
 		System.out.println("players hand");
-		for(int i = 0; i < playerHand.length; i++)
+        int playerScore =0;
+		for(int i = 0; i < playerHand.length; i++){
 			System.out.println(playerHand[i]);
-		
-		System.out.println();
-		System.out.println("the deck");
-		cardList.displayList();
+            playerScore += playerHand[i].getCardValue();
+        }
+        System.out.println("Total value: " + playerScore);
+
+
+        int dealerScore=0;
+        System.out.println("dealers hand");
+        for(int i = 0; i < dealerHand.length; i++){
+            System.out.println(dealerHand[i]);
+            dealerScore += dealerHand[i].getCardValue();
+        }
+		System.out.println("Total value: " + dealerScore);
+
+        System.out.println("\nWinner:");
+        if(playerScore>dealerScore){
+            System.out.println("Player wins with a score of " + playerScore);
+        }
+        else if(dealerScore>playerScore){
+            System.out.println("Dealer wins with a score of " + dealerScore);
+        }
+        else{
+            System.out.println("ITS A TIE!! Both scored " + playerScore + "!");
+
+        }
+        
+    
+    
+
+
+
+		//System.out.println();
+		//System.out.println("the deck");
+		//cardList.displayList();
 
 	}//end main
 

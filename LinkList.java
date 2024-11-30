@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.List;
 
 public class LinkList
 {
@@ -77,7 +79,40 @@ public class LinkList
 		return current.cardLink;
 	}
 
+
+	public void shuffle(){
+		List<Card> cards = new ArrayList<>();
+		Link current = first;
+
+		while(current !=null){
+			cards.add(current.cardLink);
+			current = current.next;
+		}
+
+		for(int i = cards.size() -1; i>0; i--){
+			int j = (int) (Math.random() * (i+1));
+			Card temp = cards.get(i);
+			cards.set(i, cards.get(j));
+			cards.set(j, temp);
+
+		}
+
+		first=null;
+		for(Card card: cards){
+			insertFirst(card);
+		}
+
+
+
+	
+	}
+
 }  // end class LinkList
+
+
+
+
+
 ////////////////////////////////////////////////////////////////
 /*class LinkedLists
 {
